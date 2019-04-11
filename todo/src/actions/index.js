@@ -3,12 +3,13 @@ import uuid from 'uuid'
 export const  ADD_TODO = "ADD_TODO"
 export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE"
 
-export const addTodo = todo => {
+export const addTodo = task => {
+  console.log(`invoke addTodo task is: ${task}`)
   return {
     type: ADD_TODO,
     payload: {
       id: uuid.v4(),
-      value: todo.value,
+      task: task,
       completed: false
     }
   }
