@@ -13,11 +13,11 @@ class TodoList extends Component {
     const { todos } = this.props
     return (
       <div className="todo-list-container">
-        <ol className="todo-list">
+        <ul className="todo-list">
           {todos.map(todo => (
             <Todo key={todo.id} todo={todo} />
           ))}
-        </ol>
+        </ul>
       </div>
     )
   }
