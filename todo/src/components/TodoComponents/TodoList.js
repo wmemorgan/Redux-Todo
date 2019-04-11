@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import Todo from './Todo'
-import '../../App.css'
+import { TodoListContainer } from './TodoStyles'
+// import '../../App.css'
 
 class TodoList extends Component {
   state = {
@@ -12,13 +13,13 @@ class TodoList extends Component {
   render() {
     const { todos } = this.props
     return (
-      <div className="todo-list-container">
+      <TodoListContainer>
         <ul className="todo-list">
           {todos.map(todo => (
             <Todo key={todo.id} todo={todo} />
           ))}
         </ul>
-      </div>
+      </TodoListContainer>
     )
   }
 }

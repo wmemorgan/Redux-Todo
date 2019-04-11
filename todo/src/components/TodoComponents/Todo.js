@@ -3,6 +3,7 @@ import ClassNames from 'classnames'
 import { connect } from 'react-redux'
 
 import { toggleComplete } from '../../actions'
+import { TodoContainer } from './TodoStyles'
 
 class Todo extends Component {
   render() {
@@ -12,12 +13,13 @@ class Todo extends Component {
     })
 
     return (
-      <div className="todo-container">
-        <li className={taskClassGroup} 
+      <TodoContainer>
+        <input type="checkbox"/>
+        <li className={taskClassGroup}
           onClick={() => this.props.toggleComplete(this.props.todo)}>
           {task}
         </li>
-      </div>
+      </TodoContainer>
     )
   }
 }
