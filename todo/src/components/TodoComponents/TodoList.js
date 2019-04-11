@@ -7,8 +7,8 @@ const TodoList = props => {
   return (
     <div className="todo-list-container">
       <ol className="todo-list">
-        {todos.map((todo, index) => (
-          <Todo key={index} todo={todo} />
+        {todos.map(todo => (
+          <Todo key={todo.id} todo={todo} />
         ))}
       </ol>
     </div>
