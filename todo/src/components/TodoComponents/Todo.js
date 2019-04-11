@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
+import ClassNames from 'classnames'
+import { connect } from 'react-redux'
 
-const Todo = props => {
-  return (
-    <div className="todo-container">
-      <li>{props.value}</li>
-    </div>
-  )
+import { toggleComplete } from '../../actions'
+
+class Todo extends Component {
+  render() {
+    const { task, completed } = this.props.todo
+    const taskClassGroup = ClassNames({
+      completed
+    })
+
+    return (
+      <div className="todo-container">
+        <li className={taskClassGroup} 
+          onClick={() => this.props.toggleComplete(this.props.todo)}>
+          {task}
+        </li>
+      </div>
+    )
+  }
 }
 
-export default Todo
+export default connect(null,{ toggleComplete })(Todo)
