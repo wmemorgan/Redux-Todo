@@ -31,3 +31,11 @@
     transform: rotate(360deg);
   }
 }
+
+.completed {
+  text-decoration: line-through;
+}
+
+.todo-container li {
+  cursor: pointer;
+}
