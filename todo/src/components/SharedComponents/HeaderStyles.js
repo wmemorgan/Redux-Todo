@@ -26,15 +26,25 @@ export const DateContainer = styled.div`
   .title {
     font-size: ${theme.fontSizing.ml};
     color: ${theme.color.primaryColor};
+
+    @media ${theme.breakpoints[0]} {
+      font-size: ${theme.fontSizing.m};
+    }
   }
 
   .tagline {
     font-size: ${theme.fontSizing.sm};
+
+    @media ${theme.breakpoints[0]} {
+      font-size: ${theme.fontSizing.s};
+    }
   }
+
+
 `
 
 export const QuoteContainer = styled.div`
-  width: 40%;
+  width: 80%;
   ${theme.flex('column','center')};
   margin-bottom: 10px;
 
