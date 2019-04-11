@@ -5,7 +5,6 @@ import TodoList from './components/TodoComponents/TodoList'
 
 import AppContainer from './components/DesignComponents/AppStyles'
 import Header from './components/SharedComponents/Header'
-import './App.css';
 
 class App extends Component {
   render() {
