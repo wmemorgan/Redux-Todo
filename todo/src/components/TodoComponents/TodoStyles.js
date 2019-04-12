@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import theme from '../DesignComponents/theme'
 
 export const TodoListContainer = styled.div`
@@ -25,16 +25,12 @@ export const TodoContainer = styled.div`
   }
 
   i {
-     font-size: ${theme.fontSizing.m};
+    font-size: ${theme.fontSizing.sm};
+  }
 
-     color: purple;
-     
-    ${props =>
-      props.completed &&
-      css`
-          color: ${theme.color.success};
-          font-weight: bold;  
-      `}
+  i.completed {
+    color: ${theme.color.success};
+    font-weight: bold;
   }
 
   li {
@@ -44,6 +40,12 @@ export const TodoContainer = styled.div`
     list-style: none;
     cursor: pointer;
   }
+
+  li.completed {
+    text-decoration: line-through;
+  }
+
+
 
 `
 

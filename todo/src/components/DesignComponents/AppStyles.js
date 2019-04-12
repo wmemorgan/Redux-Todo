@@ -9,13 +9,6 @@ const AppContainer = styled.div`
   padding: 20px 0;
   border: 1px solid black;
 
-  .completed {
-    text-decoration: line-through;
-  }
-
-  .todo-container li {
-    cursor: pointer;
-  }
 `
 
 export default AppContainer

@@ -12,9 +12,15 @@ class Todo extends Component {
       completed
     })
 
+    const iconClassGroup = ClassNames({
+      far: true,
+      "fa-check-circle": true,
+      completed
+    })
+
     return (
       <TodoContainer>
-        <i completed={completed ? 'true' : 'false'} className="far fa-check-circle"></i>
+        <i onClick={() => this.props.toggleComplete(id)} className={iconClassGroup}></i>
         <li className={taskClassGroup}
           onClick={() => this.props.toggleComplete(id)}>
           {task}
