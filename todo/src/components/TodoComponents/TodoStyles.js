@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import theme from '../DesignComponents/theme'
 
 export const TodoListContainer = styled.div`
@@ -16,7 +16,7 @@ export const TodoListContainer = styled.div`
 export const TodoContainer = styled.div`
   width: 100%;
   ${theme.flex('row','center')};
-  padding: 10px 5px;
+  padding: 10px;
   border: 1px solid ${theme.colorScheme.defaultBorderColor};
   border-bottom: none;
 
@@ -24,8 +24,19 @@ export const TodoContainer = styled.div`
     border-bottom: 1px solid ${theme.colorScheme.defaultBorderColor};
   }
 
+  i {
+     font-size: ${theme.fontSizing.m};
 
-width: 100%;
+     color: purple;
+     
+    ${props =>
+      props.completed &&
+      css`
+          color: ${theme.color.success};
+          font-weight: bold;  
+      `}
+  }
+
   li {
     width: 100%;
     margin-left: 10px;

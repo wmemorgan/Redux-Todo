@@ -7,16 +7,16 @@ import { TodoContainer } from './TodoStyles'
 
 class Todo extends Component {
   render() {
-    const { task, completed } = this.props.todo
+    const { id, task, completed } = this.props.todo
     const taskClassGroup = ClassNames({
       completed
     })
 
     return (
       <TodoContainer>
-        <input type="checkbox"/>
+        <i completed={completed ? 'true' : 'false'} className="far fa-check-circle"></i>
         <li className={taskClassGroup}
-          onClick={() => this.props.toggleComplete(this.props.todo)}>
+          onClick={() => this.props.toggleComplete(id)}>
           {task}
         </li>
       </TodoContainer>
