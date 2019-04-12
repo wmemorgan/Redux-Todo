@@ -1,4 +1,4 @@
-
+import uuid from 'uuid'
 import { ADD_TODO, TOGGLE_COMPLETE } from '../actions'
 
 const initialState = {
@@ -20,9 +20,15 @@ export const reducer = (state = initialState, action) => {
   console.log(`invoke reducer payload is: `, action.payload)
   switch(action.type) {
     case ADD_TODO:
+      let newTask =  {
+        id: uuid.v4(),
+        task: action.payload,
+        completed: false
+      }
+
       return {
         ...state,
-        todos: [...state.todos, action.payload]
+        todos: [...state.todos, newTask]
       }
 
     case TOGGLE_COMPLETE:
@@ -30,11 +36,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         todos: [
           ...state.todos.map(todo => (
-            todo.id === action.payload.id ? 
-            action.payload : todo
+            todo.id === action.payload ? 
+            {...todo, completed: !todo.completed } : todo
           ))
         ]
       }
+      
     default:
       return state
   }
