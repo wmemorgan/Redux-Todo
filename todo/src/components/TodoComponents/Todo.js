@@ -2,10 +2,32 @@ import React, { Component } from 'react'
 import ClassNames from 'classnames'
 import { connect } from 'react-redux'
 
-import { toggleComplete } from '../../actions'
-import { TodoContainer } from './TodoStyles'
+import { toggleComplete, deleteTodo } from '../../actions'
+import { TodoContainer, DeleteContainer } from './TodoStyles'
 
 class Todo extends Component {
+  state = {
+    hidden: true
+  }
+
+  toggleComplete = (e, id) => {
+    e.preventDefault()
+    this.props.toggleComplete(id)
+
+  }
+
+  toggleDeleteBtn = e => {
+    e.preventDefault()
+    this.setState(prevState => ({
+      hidden: !prevState.hidden
+    }))
+  }
+
+  deleteTodo = (e, id) => {
+    e.preventDefault()
+    this.props.deleteTodo(id)
+  }
+
   render() {
     const { id, task, completed } = this.props.todo
     const taskClassGroup = ClassNames({
@@ -20,14 +42,25 @@ class Todo extends Component {
 
     return (
       <TodoContainer>
-        <i onClick={() => this.props.toggleComplete(id)} className={iconClassGroup}></i>
+        <i onClick={(e) => this.toggleComplete(e,id)} className={iconClassGroup}></i>
         <li className={taskClassGroup}
-          onClick={() => this.props.toggleComplete(id)}>
+          onClick={(e) => this.toggleComplete(e,id)}>
           {task}
         </li>
+      <DeleteContainer>
+        {/* Toggle delete button when pressed */}
+        <i onClick={this.toggleDeleteBtn} className="fas fa-ellipsis-v"></i>
+        {
+          this.state.hidden ? '' :
+            <i className="fa fa-trash" 
+              aria-hidden="true" 
+              onClick={(e) => this.deleteTodo(e,id)}>
+            </i>
+        }
+      </DeleteContainer>
       </TodoContainer>
     )
   }
 }
 
-export default connect(null,{ toggleComplete })(Todo)
+export default connect(null,{ toggleComplete, deleteTodo })(Todo)

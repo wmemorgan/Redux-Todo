@@ -44,8 +44,22 @@ export const TodoContainer = styled.div`
   li.completed {
     text-decoration: line-through;
   }
+`
+
+export const DeleteContainer = styled.div`
+  ${theme.flex('column','flex-end')};
+
+  .fa-ellipsis-v {
+    margin: 5px;
+  }
+
+  .fa-ellipsis-v, .fa-trash {
+    cursor: pointer;
+  }
 
 
+
+  
 
 `
 
