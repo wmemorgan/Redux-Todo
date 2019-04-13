@@ -1,6 +1,6 @@
 import React, {Component } from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../../actions'
+import { addTodo, clearCompleted } from '../../actions'
 
 class TodoForm extends Component {
   state = {
@@ -17,6 +17,11 @@ class TodoForm extends Component {
     this.setState({newTask: ''})
   }
 
+  clearCompleted = e => {
+    e.preventDefault()
+    this.props.clearCompleted()
+  }
+
   render() {
     return (
       <div className="form-container">
@@ -29,10 +34,17 @@ class TodoForm extends Component {
             onChange={this.handleInput}
           />
           <button type="submit">Add Task</button>
+          <button onClick={this.clearCompleted}>Clear Completed</button>
         </form>
       </div>
     )
   }
 }
 
-export default connect(null, { addTodo })(TodoForm)
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps, { addTodo, clearCompleted })(TodoForm)
