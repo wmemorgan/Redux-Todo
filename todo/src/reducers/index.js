@@ -1,19 +1,9 @@
 import uuid from 'uuid'
-import { ADD_TODO, TOGGLE_COMPLETE, DELETE_TODO } from '../actions'
+import { ADD_TODO, TOGGLE_COMPLETE, 
+  DELETE_TODO, LOAD_STORAGE, UPDATE_STORAGE } from '../actions'
 
 const initialState = {
-  todos: [
-    {
-      id: 1,
-      task: 'Pick up milk',
-      completed: false
-    },
-    {
-      id: 2,
-      task: 'Walk the dog',
-      completed: false
-    },
-  ]
+  todos: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -49,6 +39,18 @@ export const reducer = (state = initialState, action) => {
           ...state.todos.filter(todo => todo.id !== action.payload )
         ]
       }
+
+    case LOAD_STORAGE:
+      return {
+        ...state,
+        todos: [
+          ...action.payload
+        ]
+      }
+
+    case UPDATE_STORAGE:
+      localStorage.setItem('todos', JSON.stringify(state.todos))
+      return state
       
     default:
       return state
