@@ -44,6 +44,11 @@ export const TodoContainer = styled.div`
   li.completed {
     text-decoration: line-through;
   }
+
+  .drag {
+    margin-right: 10px;
+    cursor: pointer;
+  }
 `
 
 export const DeleteContainer = styled.div`
