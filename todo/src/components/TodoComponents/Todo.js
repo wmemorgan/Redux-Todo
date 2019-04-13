@@ -41,7 +41,16 @@ class Todo extends Component {
     })
 
     return (
-      <TodoContainer>
+      <TodoContainer 
+        onDragOver={() => this.props.onDragOver(this.props.index)}>
+        {/* Assign drag and drop handlers */}
+        <div
+          className="drag" 
+          draggable
+          onDragStart={(e) => this.props.onDragStart(e, this.props.index)}
+          onDragEnd={this.props.onDragEnd}>
+          <i className="fas fa-bars"></i>
+        </div>
         <i onClick={(e) => this.toggleComplete(e,id)} className={iconClassGroup}></i>
         <li className={taskClassGroup}
           onClick={(e) => this.toggleComplete(e,id)}>

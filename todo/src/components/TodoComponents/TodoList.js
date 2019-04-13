@@ -1,15 +1,44 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { loadLocalStorage, updateLocalStorage } from '../../actions'
+import { loadLocalStorage, updateLocalStorage, sortTodos } from '../../actions'
 
 import Todo from './Todo'
 import { TodoListContainer } from './TodoStyles'
 
 class TodoList extends Component {
-  state = {
-    todos: []
-  }
+  /* 
+    Drag and Drop functionality was adapted from a
+    tutorial by Seif Ghezala
+    https://github.com/siffogh/drag-and-drop-article
+  */  
+  onDragStart = (e, index) => {
+    this.draggedTodo = this.props.todos[index];
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/html", e.target.parentNode);
+    e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
+  };
+
+  onDragOver = index => {
+    const draggedOverTodo = this.props.todos[index];
+    // if the item is dragged over itself, ignore
+    if (this.draggedTodo === draggedOverTodo) {
+      return;
+    }
+
+    // filter out the currently dragged item
+    let newTodos = this.props.todos.filter(item => item !== this.draggedTodo);
+ 
+    // add the dragged item after the dragged over item
+    newTodos.splice(index, 0, this.draggedTodo);
+   
+    // update state with newly sorted list
+    this.props.sortTodos(newTodos)
+  };
+
+  onDragEnd = () => {
+    this.draggedIdx = null;
+  };
 
   componentDidMount() {
     console.log(`componentDidMount`)
@@ -41,8 +70,16 @@ class TodoList extends Component {
     return (
       <TodoListContainer>
         <ul className="todo-list">
-          {todos.map(todo => (
-            <Todo key={todo.id} todo={todo} />
+          {todos.map((todo, index) => (
+            <Todo 
+              key={todo.id} 
+              todo={todo}
+              index={index}
+              draggable 
+              onDragOver={this.onDragOver}
+              onDragStart={this.onDragStart}
+              onDragEnd={this.onDragEnd}
+            />
           ))}
         </ul>
       </TodoListContainer>
@@ -56,4 +93,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { loadLocalStorage, updateLocalStorage })(TodoList)
+export default connect(mapStateToProps, { loadLocalStorage, updateLocalStorage, sortTodos })(TodoList)

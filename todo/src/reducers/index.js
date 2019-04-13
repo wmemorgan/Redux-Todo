@@ -1,6 +1,6 @@
 import uuid from 'uuid'
 import { ADD_TODO, TOGGLE_COMPLETE, CLEAR_COMPLETED,
-  DELETE_TODO, LOAD_STORAGE, UPDATE_STORAGE } from '../actions'
+  DELETE_TODO, LOAD_STORAGE, UPDATE_STORAGE, SORT_TODOS } from '../actions'
 
 const initialState = {
   todos: []
@@ -60,6 +60,14 @@ export const reducer = (state = initialState, action) => {
     case UPDATE_STORAGE:
       localStorage.setItem('todos', JSON.stringify(state.todos))
       return state
+
+    case SORT_TODOS:
+      return {
+        ...state,
+        todos: [
+          ...action.payload
+        ]
+      }
       
     default:
       return state
