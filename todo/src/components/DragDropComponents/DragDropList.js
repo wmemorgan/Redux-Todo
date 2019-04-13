@@ -49,7 +49,12 @@ export default class DragDropList extends React.Component {
           <ul>
             {this.state.items.map((item, idx) => (
               <li key={item} onDragOver={() => this.onDragOver(idx)}>
-                <div className="drag" draggable onDragStart={this.onDragStart}>
+                <div 
+                  className="drag" 
+                  draggable 
+                  onDragStart={e => this.onDragStart(e, idx)}
+                  onDragEnd={this.onDragEnd}
+                >
                   <i className="fas fa-bars"></i>
                 </div>
                 {item}
