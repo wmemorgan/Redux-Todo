@@ -1,5 +1,5 @@
 import uuid from 'uuid'
-import { ADD_TODO, TOGGLE_COMPLETE, CLEAR_COMPLETED,
+import { ADD_TODO, TOGGLE_COMPLETE, CLEAR_COMPLETED, UPDATE_TODO,
   DELETE_TODO, LOAD_STORAGE, UPDATE_STORAGE, SORT_TODOS } from '../actions'
 
 const initialState = {
@@ -39,6 +39,17 @@ export const reducer = (state = initialState, action) => {
           ...state.todos.filter(todo => !todo.completed)
         ]
       }
+
+    case UPDATE_TODO:
+      return {
+        ...state,
+        todos: [
+          ...state.todos.map(todo => (
+            todo.id === action.payload.id ?
+              action.payload : todo
+          ))
+        ]
+      }  
 
 
     case DELETE_TODO:

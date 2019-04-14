@@ -1,6 +1,7 @@
 export const  ADD_TODO = "ADD_TODO"
 export const TOGGLE_COMPLETE = "TOGGLE_COMPLETE"
 export const CLEAR_COMPLETED = "CLEAR_COMPLETED"
+export const UPDATE_TODO = "UPDATE_TODO"
 export const DELETE_TODO = "DELETE_TODO"
 export const LOAD_STORAGE = "LOAD_STORAGE"
 export const UPDATE_STORAGE = "UPDATE_STORAGE"
@@ -24,6 +25,13 @@ export const toggleComplete = id => {
 export const clearCompleted = () => {
   return {
     type: CLEAR_COMPLETED
+  }
+}
+
+export const updateTodo = todo => {
+  return {
+    type: UPDATE_TODO,
+    payload: todo
   }
 }
 

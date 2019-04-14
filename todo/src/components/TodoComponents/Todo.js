@@ -2,18 +2,37 @@ import React, { Component } from 'react'
 import ClassNames from 'classnames'
 import { connect } from 'react-redux'
 
-import { toggleComplete, deleteTodo } from '../../actions'
+import { toggleComplete, updateTodo, deleteTodo } from '../../actions'
 import { TodoContainer, DeleteContainer } from './TodoStyles'
 
 class Todo extends Component {
   state = {
-    hidden: true
+    task: this.props.todo.task,
+    hidden: true,
+    edit: false
+  }
+
+  inputChangeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  toggleEdit() {
+    this.setState(prevState => (
+      { edit: !prevState.edit }
+    ),
+      () => console.log(`invoke toggleEdit`)
+    )
+  }
+
+  updateTodo = (e) => {
+    e.preventDefault()
+    this.props.updateTodo({...this.props.todo, task: this.state.task})
+    this.setState({ edit: false })
   }
 
   toggleComplete = (e, id) => {
     e.preventDefault()
     this.props.toggleComplete(id)
-
   }
 
   toggleDeleteBtn = e => {
@@ -52,13 +71,24 @@ class Todo extends Component {
           <i className="fas fa-bars"></i>
         </div>
         <i onClick={(e) => this.toggleComplete(e,id)} className={iconClassGroup}></i>
-        <li className={taskClassGroup}
-          onClick={(e) => this.toggleComplete(e,id)}>
-          {task}
-        </li>
+        {!this.state.edit ?
+          <li className={taskClassGroup}
+            onClick={() => this.toggleEdit()}>
+            {task}
+          </li> :
+          <form onSubmit={(e) => this.updateTodo(e)}>
+            <input name="task" type="text"
+              onChange={this.inputChangeHandler}
+              value={this.state.task}
+            />
+          </form>
+        }
+
       <DeleteContainer>
-        {/* Toggle delete button when pressed */}
-        <i onClick={this.toggleDeleteBtn} className="fas fa-ellipsis-v"></i>
+        {!this.state.edit ?
+          <i onClick={this.toggleDeleteBtn} className="fas fa-ellipsis-v"></i> :
+          <i className="far fa-edit" onClick={(e) => this.updateTodo(e)}></i>
+        }     
         {
           this.state.hidden ? '' :
             <i className="fa fa-trash" 
@@ -72,4 +102,10 @@ class Todo extends Component {
   }
 }
 
-export default connect(null,{ toggleComplete, deleteTodo })(Todo)
+const mapStateToProps = state => {
+  return {
+    todos: state.todos
+  }
+}
+
+export default connect(mapStateToProps,{ toggleComplete, updateTodo, deleteTodo })(Todo)

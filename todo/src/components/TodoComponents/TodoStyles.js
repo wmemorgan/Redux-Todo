@@ -45,6 +45,17 @@ export const TodoContainer = styled.div`
     text-decoration: line-through;
   }
 
+  form {
+    width: 100%;
+    margin-left: 10px;
+  }
+
+  input {
+    width: 100%;
+    padding: 5px;
+    font-size: ${theme.fontSizing.s};
+  }
+
   .drag {
     margin-right: 10px;
     cursor: pointer;
@@ -54,11 +65,11 @@ export const TodoContainer = styled.div`
 export const DeleteContainer = styled.div`
   ${theme.flex('column','flex-end')};
 
-  .fa-ellipsis-v {
+  .fa-ellipsis-v, .fa-edit {
     margin: 5px;
   }
 
-  .fa-ellipsis-v, .fa-trash {
+  .fa-ellipsis-v, .fa-trash, .fa-edit {
     cursor: pointer;
   }
 
