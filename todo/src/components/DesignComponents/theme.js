@@ -3,6 +3,7 @@ const theme = {
     primaryColor: '#265077',
     primaryDark: '#022140',
     primaryBgShading: '#F5F8FA',
+    primaryBgShadingDark: '#C5CAE9',
     secondaryColor: '#e4e5eb',
     secondaryBgShading: 'lightgray',
     accent: '#51A7F8',

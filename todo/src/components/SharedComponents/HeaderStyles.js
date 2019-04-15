@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
     ${theme.flex('column','center')};
     margin-bottom 10px;
     padding: 10px 5%;
-    border-bottom: 2px solid ${theme.colorScheme.defaultBorderColor};
+    border-bottom: 30px solid ${theme.color.primaryBgShadingDark};
 `
 
 export const StatusContainer = styled.div`
