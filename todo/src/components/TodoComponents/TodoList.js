@@ -10,7 +10,7 @@ class TodoList extends Component {
   /* 
     Drag and Drop functionality was adapted from a
     tutorial by Seif Ghezala
-    https://github.com/siffogh/drag-and-drop-article
+    https://medium.freecodecamp.org/how-to-make-and-test-your-own-react-drag-and-drop-list-with-0-dependencies-6fb461603780
   */  
   onDragStart = (e, index) => {
     this.draggedTodo = this.props.todos[index];
