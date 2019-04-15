@@ -2,6 +2,8 @@ import React, {Component } from 'react'
 import { connect } from 'react-redux'
 import { addTodo, clearCompleted } from '../../actions'
 
+import { FormContainer } from './TodoStyles'
+
 class TodoForm extends Component {
   state = {
     newTask: ''
@@ -24,7 +26,7 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <div className="form-container">
+      <FormContainer>
         <form onSubmit={this.handleSubmit}>
           <input 
             type="text"
@@ -33,10 +35,9 @@ class TodoForm extends Component {
             value={this.state.newTask}
             onChange={this.handleInput}
           />
-          <button type="submit">Add Task</button>
-          <button onClick={this.clearCompleted}>Clear Completed</button>
+          <button type="submit">+</button>
         </form>
-      </div>
+      </FormContainer>
     )
   }
 }
