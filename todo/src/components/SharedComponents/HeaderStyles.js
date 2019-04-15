@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import theme from '../DesignComponents/theme'
 
 export const HeaderContainer = styled.header`
-    width: 90%;
+    width: 100%;
     max-width: 800px;
     ${theme.flex('column','center')};
     margin-bottom 10px;
-    padding: 10px;
-    border-bottom: 1px solid ${theme.colorScheme.defaultBorderColor};
+    padding: 10px 5%;
+    border-bottom: 2px solid ${theme.colorScheme.defaultBorderColor};
 `
 
 export const StatusContainer = styled.div`
