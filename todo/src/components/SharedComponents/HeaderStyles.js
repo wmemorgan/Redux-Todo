@@ -3,9 +3,10 @@ import theme from '../DesignComponents/theme'
 
 export const HeaderContainer = styled.header`
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     ${theme.flex('column','center')};
-    margin: 10px 0;
+    margin-bottom 10px;
+    padding: 10px;
     border-bottom: 1px solid ${theme.colorScheme.defaultBorderColor};
 `
 
@@ -14,6 +15,8 @@ export const StatusContainer = styled.div`
     ${theme.flex('row', 'flex-start', 'space-between')};
     .status {
       font-size: ${theme.fontSizing.s};
+      font-weight: bold;
+      color: ${theme.color.danger};
     }
 `
 
@@ -25,6 +28,7 @@ export const DateContainer = styled.div`
 
   .title {
     font-size: ${theme.fontSizing.ml};
+    font-weight: bold;
     color: ${theme.color.primaryColor};
 
     @media ${theme.breakpoints[0]} {
@@ -55,6 +59,10 @@ export const QuoteContainer = styled.div`
   .quote-text {
     font-size: ${theme.fontSizing.s};
     font-style: italic;
+  }
+
+  .quote-author {
+    font-size: ${theme.fontSizing.xs};
   }
 
 `

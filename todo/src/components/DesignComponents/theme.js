@@ -4,7 +4,7 @@ const theme = {
     primaryDark: '#022140',
     primaryBgShading: '#F5F8FA',
     secondaryColor: '#e4e5eb',
-    secondaryBgShading: '#C5CAE9',
+    secondaryBgShading: 'lightgray',
     accent: '#51A7F8',
     emphasis: '#212121',
     darkText: '#595959',

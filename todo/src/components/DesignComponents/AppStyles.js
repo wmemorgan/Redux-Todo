@@ -1,13 +1,14 @@
 import styled from 'styled-components'
-import { flex } from './theme'
+import theme from './theme'
 
 const AppContainer = styled.div`
   width: 90%;
   max-width: 800px;
-  ${flex('column','center','center')};
+  ${theme.flex('column','center','center')};
   margin: 20px auto;
-  padding: 20px 0;
-  border: 1px solid black;
+  padding: 10px 0;
+  border: 2px solid ${theme.colorScheme.primaryColor};
+  border-radius: 36px;
 
 `
 

@@ -16,13 +16,10 @@ export const TodoListContainer = styled.div`
 export const TodoContainer = styled.div`
   width: 100%;
   ${theme.flex('row','center')};
+  margin: 5px 0;
   padding: 10px;
   border: 1px solid ${theme.colorScheme.defaultBorderColor};
-  border-bottom: none;
-
-  &:last-child {
-    border-bottom: 1px solid ${theme.colorScheme.defaultBorderColor};
-  }
+  border-radius: 5px;
 
   i {
     font-size: ${theme.fontSizing.sm};
@@ -37,6 +34,7 @@ export const TodoContainer = styled.div`
     width: 100%;
     margin-left: 10px;
     font-size: ${theme.fontSizing.s};
+    color: black;
     list-style: none;
     cursor: pointer;
   }
