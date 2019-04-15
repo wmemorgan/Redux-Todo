@@ -3,7 +3,23 @@ import { ADD_TODO, TOGGLE_COMPLETE, CLEAR_COMPLETED, UPDATE_TODO,
   DELETE_TODO, LOAD_STORAGE, UPDATE_STORAGE, SORT_TODOS } from '../actions'
 
 const initialState = {
-  todos: []
+  todos: [
+    {
+     id: 1,
+     task: 'Buy milk',
+     completed: false 
+    },
+    {
+     id: 2,
+     task: 'Walk the dog',
+     completed: false 
+    },
+    {
+     id: 3,
+     task: 'Take out the trash',
+     completed: false 
+    },
+  ]
 }
 
 export const reducer = (state = initialState, action) => {
