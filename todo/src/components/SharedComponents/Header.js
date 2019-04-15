@@ -11,7 +11,7 @@ class Header extends Component {
   }
 
   getQuote = () => {
-    fetch('http://quotes.rest/qod.json')
+    fetch('https://quotes.rest/qod.json')
       .then(response => response.json())
       .then(data => (
         this.setState({
